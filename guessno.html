@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guess the Number</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(to right, #ff0080, #7518d1);
+      color: white;
+      text-align: center;
+      padding: 40px;
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      0%   { transform: translateY(-100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    body::before {
+      content: '';
+      background-image: url('https://tse1.mm.bing.net/th/id/OIP.mEH_rV-L_lXE0P5QIVRkVwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      opacity: 0.2;
+    }
+
+    #gameArea {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00f2ff;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      width: 100px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #00f2ff;
+      color: black;
+      cursor: pointer;
+    }
+
+    #guessFeedback {
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="gameArea"></div>
+
+  <script>
+    // ========== Guess Number ==========
+    let guessNumber = 0, guessCount = 0;
+
+    function loadGuess() {
+      let html = `
+        <h2>🔢 Guess the Number</h2>
+        <p>Guess a number between 1–100:</p>
+        <input type="number" id="guessInput">
+        <br>
+        <button onclick="checkGuess()">Submit Guess</button>
+        <div id="guessFeedback"></div>
+      `;
+      document.getElementById('gameArea').innerHTML = html;
+      guessNumber = Math.floor(Math.random() * 100) + 1;
+      guessCount = 0;
+    }
+
+    function checkGuess() {
+      let val = parseInt(document.getElementById('guessInput').value);
+      guessCount++;
+      let feedback = document.getElementById('guessFeedback');
+
+      if (val === guessNumber) {
+        feedback.innerHTML = `🎉 Correct! Guessed in ${guessCount} tries.<br><button onclick="loadGuess()">Play Again</button>`;
+      } else if (val < guessNumber) {
+        feedback.innerHTML = '⬆ Higher!';
+      } else {
+        feedback.innerHTML = '⬇ Lower!';
+      }
+    }
+
+    window.onload = loadGuess;
+  </script>
+</body>
+</html>

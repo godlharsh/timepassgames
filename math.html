@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Math Quiz Game</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      0%   { transform: translateY(-100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    #gameArea {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 20px #00f2ff;
+      width: 300px;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      width: 100px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #00f2ff;
+      color: black;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="gameArea"></div>
+
+  <script>
+    // ========== Math Quiz ==========
+    let mathTotal = 0, mathCurrent = 0, mathScore = 0, mathAnswer = 0;
+
+    function getRandom(low, high) {
+      return Math.floor(Math.random() * (high - low + 1)) + low;
+    }
+
+    function loadMathQuiz() {
+      document.getElementById('gameArea').innerHTML = `
+        <p>Number of questions:</p>
+        <input type="number" id="mathCount" value="5" min="1">
+        <br>
+        <button onclick="startMathQuiz()">Start Quiz</button>
+        <div id="mathArea"></div>
+      `;
+    }
+
+    function startMathQuiz() {
+      mathTotal = parseInt(document.getElementById('mathCount').value);
+      mathCurrent = 0;
+      mathScore = 0;
+      nextMathQuestion();
+    }
+
+    function nextMathQuestion() {
+      if (mathCurrent >= mathTotal) {
+        document.getElementById('mathArea').innerHTML = `
+          <h3>Quiz Over! Score: ${mathScore}/${mathTotal}</h3>
+          <button onclick="loadMathQuiz()">Play Again</button>
+        `;
+        return;
+      }
+
+      mathCurrent++;
+      let op = getRandom(0, 3), a, b, text;
+      if (op === 0) {
+        a = getRandom(1, 50); b = getRandom(1, 50);
+        mathAnswer = a + b; text = `${a} + ${b}`;
+      } else if (op === 1) {
+        a = getRandom(0, 99); b = getRandom(0, a);
+        mathAnswer = a - b; text = `${a} - ${b}`;
+      } else if (op === 2) {
+        a = getRandom(1, 12); b = getRandom(1, 12);
+        mathAnswer = a * b; text = `${a} × ${b}`;
+      } else {
+        b = getRandom(1, 12); let mult = getRandom(1, 12);
+        a = b * mult; mathAnswer = a / b; text = `${a} ÷ ${b}`;
+      }
+
+      document.getElementById('mathArea').innerHTML = `
+        <p>Question ${mathCurrent}: ${text} = ?</p>
+        <input type="number" id="mathAns">
+        <br>
+        <button onclick="checkMath()">Submit</button>
+        <div id="mathFeed" class="result"></div>
+      `;
+    }
+
+    function checkMath() {
+      let val = parseInt(document.getElementById('mathAns').value);
+      if (val === mathAnswer) {
+        mathScore++;
+        document.getElementById('mathFeed').innerHTML = '✅ Correct';
+      } else {
+        document.getElementById('mathFeed').innerHTML = `❌ Wrong! Correct = ${mathAnswer}`;
+      }
+      setTimeout(nextMathQuestion, 1000);
+    }
+
+    window.onload = loadMathQuiz;
+  </script>
+</body>
+</html>

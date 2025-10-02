@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(to right, #c60ae3, #000);
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+  
+
+body::before {
+  content: '';
+  background-image: url('https://tse1.mm.bing.net/th/id/OIP.mEH_rV-L_lXE0P5QIVRkVwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;         /* Peeche rahega */
+  opacity: 20;        /* Light effect */
+}
+
+    .choices {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 3rem;
+      margin-top: 20px;
+    }
+    .choices div {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .choices div:hover {
+      transform: scale(1.2);
+    }
+    #rpsResult {
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>✊ Rock ✋ Paper ✌️ Scissors</h2>
+  <div class="choices">
+    <div onclick="playRPS(0)">✊</div>
+    <div onclick="playRPS(1)">✋</div>
+    <div onclick="playRPS(2)">✌️</div>
+  </div>
+  <div id="rpsResult"></div>
+
+  <script>
+    function playRPS(player) {
+      const computer = Math.floor(Math.random() * 3);
+      let result = `Computer chose ${["✊","✋","✌️"][computer]}<br>`;
+
+      if (player === computer) result += "It's a Draw!";
+      else if ((player === 0 && computer === 2) || (player === 1 && computer === 0) || (player === 2 && computer === 1)) 
+        result += "You Win!";
+      else result += "You Lose!";
+
+      document.getElementById("rpsResult").innerHTML = result;
+    }
+  </script>
+</body>
+</html>

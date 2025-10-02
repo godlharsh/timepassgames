@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tic Tac Toe</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(to right, #ff416c, #9932cc);
+      color: white;
+      text-align: center;
+      padding: 40px;
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      0%   { transform: translateY(-100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    body::before {
+      content: '';
+      background-image: url('https://tse1.mm.bing.net/th/id/OIP.mEH_rV-L_lXE0P5QIVRkVwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      opacity: 0.2;
+    }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 10px;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 2.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00f2ff;
+      transition: transform 0.2s;
+    }
+
+    .cell:hover {
+      transform: scale(1.1);
+    }
+
+    .win {
+      background: #00f2ff;
+      color: black;
+      font-weight: bold;
+      box-shadow: 0 0 20px #00f2ff;
+    }
+
+    #message {
+      font-size: 1.5rem;
+      margin-top: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #00f2ff;
+      color: black;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>❌ Tic Tac Toe ⭕</h2>
+  <div id="gameArea"></div>
+
+  <script>
+    // ========== Tic Tac Toe ==========
+    let tBoard = [], tPlayer = 'X', tGameOver = false, tWinCombo = [];
+
+    function loadTicTacToe() {
+      tBoard = ['', '', '', '', '', '', '', '', ''];
+      tPlayer = 'X';
+      tGameOver = false;
+      tWinCombo = [];
+      renderTicTacToe();
+    }
+
+    function renderTicTacToe() {
+      let html = '<div id="board">';
+      for (let i = 0; i < 9; i++) {
+        let winClass = tWinCombo.includes(i) ? 'win' : '';
+        html += `<div class="cell ${winClass}" onclick="tMove(${i})">${tBoard[i]}</div>`;
+      }
+      html += '</div><div id="message">Current Turn: ' + tPlayer + '</div>';
+      if (tGameOver) html += `<button onclick="loadTicTacToe()">Play Again</button>`;
+      document.getElementById('gameArea').innerHTML = html;
+    }
+
+    function tMove(idx) {
+      if (tBoard[idx] === '' && !tGameOver) {
+        tBoard[idx] = tPlayer;
+        checkTWinner();
+        if (!tGameOver) tPlayer = tPlayer === 'X' ? 'O' : 'X';
+        renderTicTacToe();
+      }
+    }
+
+    function checkTWinner() {
+      const combos = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+      ];
+      for (const c of combos) {
+        const [a, b, d] = c;
+        if (tBoard[a] && tBoard[a] === tBoard[b] && tBoard[a] === tBoard[d]) {
+          tGameOver = true;
+          tWinCombo = c;
+          document.getElementById('message').innerHTML = `🎉 Player ${tBoard[a]} wins!`;
+          return;
+        }
+      }
+      if (!tBoard.includes('')) {
+        tGameOver = true;
+        document.getElementById('message').innerHTML = "😮 It's a tie!";
+      }
+    }
+
+    window.onload = loadTicTacToe;
+  </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="main-container"> <svg class="svg-container">
+            <defs>
+                <filter id="turbulent-displace" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%"
+                    height="140%">
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+                        <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+                        <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+                        <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+                        <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+                    <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+                    <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+                    <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R"
+                        yChannelSelector="B" />
+                </filter>
+            </defs>
+        </svg>
+        <div class="card-container" onclick="window.location.href='rps.html'">
+            <div id="gameArea"></div>
+            <div class="inner-container">
+                <div class="border-outer">
+                    <div class="main-card"></div>
+                </div>
+                <div class="glow-layer-1"></div>
+                <div class="glow-layer-2"></div>
+            </div>
+            <div class="overlay-1"></div>
+            <div class="overlay-2"></div>
+            <div class="background-glow"></div>
+            <div class="content-container">
+                <div class="content-top">
+                    <div class="scrollbar-glass"> Dramatic </div> <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqjH87ZtHjv_uHKwOnrY-J752o-dJqiH4bePU-TKqJLqtSSebkAS0iUJc&s"
+                        alt="nothinh" class="game-image" />
+                    <p class="title">Rock paper and scissor</p>
+                </div>
+                <hr class="divider" />
+                <div class="content-bottom">
+                    <p class="description">2 player game between computer and player</p>
+                </div>
+            </div>
+        </div> <svg class="svg-container1">
+            <defs>
+                <filter id="turbulent-displace" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%"
+                    height="140%">
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+                        <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+                        <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+                        <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+                        <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+                    <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+                    <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+                    <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R"
+                        yChannelSelector="B" />
+                </filter>
+            </defs>
+        </svg>
+        <div class="card-container1" onclick="window.location.href='math.html'">
+            <div class="inner-container1">
+                <div class="border-outer1">
+                    <div class="main-card1"></div>
+                </div>
+                <div class="glow-layer-11"></div>
+                <div class="glow-layer-21"></div>
+            </div>
+            <div class="overlay-11"></div>
+            <div class="overlay-21"></div>
+            <div class="background-glow1"></div>
+            <div class="content-container1">
+                <div class="content-top1">
+                    <div class="scrollbar-glass1"> Dramatic </div> <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlo3iKP9T0TSdvGqHy2LLBClYZkMFyVSEdQw&s"
+                        class="game-image1" />
+                    <p class="title1">Math Quizes</p>
+                </div>
+                <hr class="divider1" />
+                <div class="content-bottom1">
+                    <p class="description1">Simple math quizes for mind refreshing</p>
+                </div>
+            </div>
+        </div> <svg class="svg-container2">
+            <defs>
+                <filter id="turbulent-displace" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%"
+                    height="140%">
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+                        <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+                        <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+                        <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+                        <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+                    <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+                    <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+                    <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R"
+                        yChannelSelector="B" />
+                </filter>
+            </defs>
+        </svg>
+        <div class="card-container2" onclick="window.location.href='guessno.html'">
+            <div class="inner-container2">
+                <div class="border-outer2">
+                    <div class="main-card2"></div>
+                </div>
+                <div class="glow-layer-12"></div>
+                <div class="glow-layer-22"></div>
+            </div>
+            <div class="overlay-12"></div>
+            <div class="overlay-22"></div>
+            <div class="background-glow2"></div>
+            <div class="content-container2">
+                <div class="content-top2">
+                    <div class="scrollbar-glass2"> Dramatic </div> <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2wa79Iu5Hc6tWwwtm9YZj7daCD2m8QuAYKQ&s"
+                        class="game-image2">
+                    <p class="title2">Number guessing</p>
+                </div>
+                <hr class="divider2" />
+                <div class="content-bottom2">
+                    <p class="description2">Guess the number to win the game</p>
+                </div>
+            </div>
+        </div> <svg class="svg-container3">
+            <defs>
+                <filter id="turbulent-displace" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%"
+                    height="140%">
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+                        <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+                        <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+                    <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+                        <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+                    <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+                        <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite"
+                            calcMode="linear" />
+                    </feOffset>
+                    <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+                    <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+                    <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+                    <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R"
+                        yChannelSelector="B" />
+                </filter>
+            </defs>
+        </svg>
+        <div class="card-container3" onclick="window.location.href='ttt.html'">
+            <div class="inner-container3">
+                <div class="border-outer3">
+                    <div class="main-card3"></div>
+                </div>
+                <div class="glow-layer-13"></div>
+                <div class="glow-layer-23"></div>
+            </div>
+            <div class="overlay-13"></div>
+            <div class="overlay-23"></div>
+            <div class="background-glow3"></div>
+            <div class="content-container3">
+                <div class="content-top3">
+                    <div class="scrollbar-glass3"> Dramatic </div> <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3VuHYMmuJ6bzZmJs3o6pBpL3ggHiDb1wZWw&s"
+                        class="game-image3" />
+                    <p class="title3">Tic Tac Toe</p>
+                </div>
+                <hr class="divider3" />
+                <div class="content-bottom1">
+                    <p class="description3">Two player game for time pass</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
